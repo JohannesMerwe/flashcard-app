@@ -1,0 +1,16 @@
+name: CI
+on: [push]
+jobs:
+    eslint:
+        name: Lint codebase
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Install dependencies
+              run: npm run install --frozen-lockfile
+            - name: Lint codebase
+              run: npm run ci:lint
+            - name: Run tests
+              run: npm run ci:test
