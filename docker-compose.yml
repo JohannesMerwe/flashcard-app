@@ -1,14 +1,14 @@
 version: "2"
 services:
-  flashcard-app:
-    build:
-      context: "."
-      dockerfile: "Dockerfile"
-    environment:
-      - PORT=7000
-    ports:
-      - "7000:7000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: npm run dev
+    flashcard-app:
+        build:
+            context: "."
+            dockerfile: "Dockerfile"
+        environment:
+            - PORT=7000
+        ports:
+            - "7000:7000"
+        volumes:
+            - .:/app
+            - /app/node_modules
+        command: npm run dev
