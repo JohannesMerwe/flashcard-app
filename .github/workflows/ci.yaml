@@ -14,3 +14,9 @@ jobs:
               run: npm run ci:lint
             - name: Run tests
               run: npm run ci:test
+            - name: Deploy to Vercel
+              if: success()  # This ensures the step only runs if the tests pass
+              env:
+                  VERCEL_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}  # Use the secret as an environment variable
+              run: curl -X POST -H "Content-Type: application/json" -d '{}' $VERCEL_HOOK
+

@@ -8,7 +8,8 @@ interface FlashcardProps {
 }
 
 const Card = styled.div`
-    background-color: #68edc6;
+    background-color: #333333;
+    color: #ffffff;
     border: 1px solid #ccc;
     padding: 20px;
     margin: 20px;
