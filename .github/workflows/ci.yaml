@@ -1,22 +1,26 @@
 name: CI
 on: [push]
+env:
+    VERCEL_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }} # Use the secret as an environment variable
 jobs:
-    eslint:
-        name: Lint codebase
+    build-and-deploy:
+        name: Build and Deploy
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
+
             - name: Install dependencies
               run: npm install --frozen-lockfile
+
             - name: Lint codebase
               run: npm run ci:lint
+
             - name: Run tests
               run: npm run ci:test
-            - name: Deploy to Vercel
-              if: success()  # This ensures the step only runs if the tests pass
-              env:
-                  VERCEL_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}  # Use the secret as an environment variable
-              run: curl -X POST -H "Content-Type: application/json" -d '{}' $VERCEL_HOOK
 
+            - name: Deploy to Vercel
+              run: >-
+                  curl -X POST -H "Content-Type: application/json"
+                  -d '{}' $VERCEL_HOOK
