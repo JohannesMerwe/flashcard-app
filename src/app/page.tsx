@@ -1,9 +1,9 @@
-import Flashcard from "@/components/Flashcard";
+import Link from "next/link";
 
 export default function Home() {
     return (
         <main>
-            <Flashcard question="What the color of my eyes?" answer="Blue" />
+            Welcome <Link href="/flashcards">flashcards</Link>
         </main>
     );
 }
