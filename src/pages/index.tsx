@@ -15,7 +15,7 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            Hello World
+            Hello World 2
         </>
     );
 }
